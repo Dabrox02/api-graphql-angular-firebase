@@ -6,9 +6,9 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "prestart": "npm run build",
-    "start": "node ./dist/index.js",
+    "start": "node --env-file .env ./dist/index.js",
     "preserve": "npm run build",
-    "serve": "concurrently \"tsc -w\" \"nodemon ./dist/index.js\""
+    "serve": "concurrently \"tsc -w\" \"nodemon --env-file .env ./dist/index.js\""
   },
   "keywords": [],
   "author": "",
@@ -16,9 +16,7 @@
   "description": "",
   "dependencies": {
     "@apollo/server": "^4.10.4",
-    "@firebase/firestore": "^4.6.1",
     "cors": "^2.8.5",
-    "firebase": "^10.11.1",
     "firebase-admin": "^12.1.0",
     "graphql": "^16.8.1"
   },
