@@ -8,9 +8,22 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "outDir": "./dist"
+    "noImplicitAny": false,
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "node_modules/*",
+        "node_modules/@types/*",
+      ]
+    },
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "node_modules"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
