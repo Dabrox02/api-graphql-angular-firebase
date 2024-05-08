@@ -3,31 +3,33 @@ import { db } from "../firebase/firebase.js";
 
 export const resolvers = {
     Query: {
-        async aplicaciones() {
-            try {
-                const snapshot = await db.collection('aplicaciones').get();
-                const data = snapshot.docs.map((doc: DocumentSnapshot) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                }));
-                return data;
-            } catch (error) {
-                console.error(error);
-            }
+        async aplicaciones(parent, args, context) {
+            if (!context.uid) return null;
+            const snapshot = await db.collection('aplicaciones').get();
+            const data = snapshot.docs.map((doc: DocumentSnapshot) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            return data;
         },
-        async cantidadAplicaciones() {
-            try {
-                const snapshot = await db.collection('aplicaciones').get();
-                const data = snapshot.docs.map((doc: DocumentSnapshot) => ({
-                    id: doc.id,
-                    ...doc.data(),
-                }));
-                return data.length;
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
+        async cantidadAplicaciones(paren, args, context) {
+            if (!context.uid) return null;
+            const snapshot = await db.collection('aplicaciones').get();
+            const data = snapshot.docs.map((doc: DocumentSnapshot) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            return data.length;
+        },
+        async aplicacionUsuario(parent, args, context) {
+            if (!context.uid) return null;
+            const snapshot = await db.collection('aplicaciones').where('uid', '==', context.uid).get();
+            const data = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            return data;
+        },
     },
 };
 

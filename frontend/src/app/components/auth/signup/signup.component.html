@@ -1,0 +1,47 @@
+<div class="form">
+    <div class="form__container">
+        <h1>Crea una Cuenta</h1>
+        <h2>Es Rápido y Fácil</h2>
+
+        <mat-divider role="separator"></mat-divider>
+        <form [formGroup]="form" (ngSubmit)="signUp()">
+            <div>
+                <mat-form-field>
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="nombre" />
+                    <mat-error>Este campo es requerido</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>Correo</mat-label>
+                    <input matInput formControlName="correo" />
+                    <mat-error *ngIf="isEmailValid as messsage">{{ messsage }}</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field>
+                    <mat-label>Clave</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="clave" />
+                    <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+                    </button>
+                    <mat-error>Este campo es requerido</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <button mat-flat-button color="primary" type="submit">Sign up</button>
+            </div>
+        </form>
+
+        <mat-divider role="separator"></mat-divider>
+
+        <app-button-provider></app-button-provider>
+        <h2 class="log-in-redirect">¿Ya tienes Cuenta?
+            <a routerLink="/auth/login">Login</a>
+        </h2>
+    </div>
+</div>

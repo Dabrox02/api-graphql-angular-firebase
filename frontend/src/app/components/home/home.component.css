@@ -1,0 +1,11 @@
+.spacer-header-login {
+    flex: 1 1 auto;
+}
+
+mat-toolbar-row h1 {
+    font-weight: 400 !important;
+}
+
+h1 {
+    font-weight: 300;
+}

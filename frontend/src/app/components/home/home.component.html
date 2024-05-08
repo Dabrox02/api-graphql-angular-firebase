@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <h1>Tus Aplicaciones</h1>
+        <span class="spacer-header-login"></span>
+        <div class="example-button-container">
+            <button mat-icon-button (click)="logout()">
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div>
+    <h1 class="title-home">
+        Bienvenido, {{nombreUsuario}}
+    </h1>
+
+    <div>
+        <mat-list>
+            <div mat-subheader>Aplicaciones</div>
+            <mat-list-item>
+                <mat-icon matListItemIcon>bookmark</mat-icon>
+                <div matListItemTitle>hola</div>
+                <div matListItemLine>xd</div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            {{aplicaciones}}
+        </mat-list>
+    </div>
+</div>

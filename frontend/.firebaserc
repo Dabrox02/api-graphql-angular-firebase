@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "api-graphql-angular-firebase": {
+      "hosting": {
+        "frontend": [
+          "api-graphql-angular-firebase"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "api-graphql-angular-firebase"
+  }
+}

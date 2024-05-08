@@ -13,7 +13,7 @@ export const crearUsuario = async (req: Request, res: Response) => {
                     disabled: false,
                 })
                 .then((userRecord) => {
-                    res.status(200).json({ message: `Successfully created new user:, ${userRecord.uid}` })
+                    res.status(200).json({ message: `Successfully created new user:, ${userRecord.uid}`, user: userRecord })
                 })
                 .catch((error) => {
                     res.status(400).json({ message: `Error creating new user:, ${error}` })
