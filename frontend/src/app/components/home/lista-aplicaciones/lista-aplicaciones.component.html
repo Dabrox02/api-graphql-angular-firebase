@@ -1,0 +1,21 @@
+@for (app of listaAplicaciones; track $index) {
+<mat-list>
+    <div class="title-app">{{utils.capitalize(app.nombreAplicacion)}}</div>
+    <div class="credentials">
+        <div class="item-icon">
+            <mat-icon matListItemIcon>bookmark</mat-icon>
+        </div>
+        <div class="item-app">
+            <div matListItemTitle><span>Usuario:</span> <span>{{app.credenciales.usuario}}</span></div>
+            <div matListItemLine><span>Clave:</span> <span> {{app.credenciales.clave}}</span></div>
+        </div>
+        <div class="options-app">
+            <button mat-icon-button (click)="eliminarAplicacion(app)">
+                <mat-icon matListItemIcon>delete</mat-icon>
+            </button>
+        </div>
+    </div>
+
+    <mat-divider></mat-divider>
+</mat-list>
+}

@@ -9,8 +9,8 @@ import { expressMiddleware } from "@apollo/server/express4";
 import authRouter from "./routes/auth.routes.js";
 import { requireAuth } from "./middlewares/auth.middleware.js";
 import { auth } from "./firebase/firebase.js";
-import { GraphQLError } from "graphql/error/GraphQLError.js";
 import { logger } from "./logger/logger.js";
+import { ApolloServerPluginCacheControlDisabled } from "@apollo/server/plugin/disabled";
 
 const port = process.env.PORT || 5000;
 const app: Express = express();
@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-
+    includeStacktraceInErrorResponses: false,
 });
 
 await server.start();

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Auth, authState, createUserWithEmailAndPassword, GoogleAuthProvider, idToken, signInWithCredential, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth';
-import { Observable, Subscription } from 'rxjs';
+import { Auth, authState, browserSessionPersistence, GoogleAuthProvider, revokeAccessToken, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
 import { apiEnviroment } from '../../enviroments/apiEnviroment';
 import { Credencial, User } from '../types/user.type';
 
@@ -15,7 +15,9 @@ export class AuthService {
   auth: Auth = inject(Auth);
   readonly authState$ = authState(this.auth);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.auth.setPersistence(browserSessionPersistence);
+  }
 
   signupWithEmailAndPassword(usuario: User): Observable<any> {
     return this.http.post<any>(`${this.API_SIGNUP}`, usuario).pipe(res => res);
@@ -52,7 +54,7 @@ export class AuthService {
     });
   }
 
-  logout() {
+  async logout() {
     return this.auth.signOut();
   }
 

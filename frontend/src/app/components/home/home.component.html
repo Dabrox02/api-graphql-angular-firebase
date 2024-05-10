@@ -10,21 +10,22 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<div>
+
+<div class="container-aplicaciones">
     <h1 class="title-home">
         Bienvenido, {{nombreUsuario}}
     </h1>
 
+    <button mat-raised-button color="primary" (click)="openAddAplication()">Agregar Aplicacion</button>
+
+    @if (cargando) {
+    <h1>Cargando...</h1>
+    }
+
+    @if(!cargando){
     <div>
-        <mat-list>
-            <div mat-subheader>Aplicaciones</div>
-            <mat-list-item>
-                <mat-icon matListItemIcon>bookmark</mat-icon>
-                <div matListItemTitle>hola</div>
-                <div matListItemLine>xd</div>
-            </mat-list-item>
-            <mat-divider></mat-divider>
-            {{aplicaciones}}
-        </mat-list>
+        <app-lista-aplicaciones [listaAplicaciones]="this.aplicaciones"
+            (deleteAplicacionEmit)="obtenerAplicaciones()"></app-lista-aplicaciones>
     </div>
+    }
 </div>

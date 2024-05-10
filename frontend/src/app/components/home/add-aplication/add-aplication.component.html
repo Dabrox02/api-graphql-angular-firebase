@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Agregar Aplicacion</h1>
+<div mat-dialog-content>
+    <p>Nombre Aplicacion</p>
+    <mat-form-field>
+        <mat-label></mat-label>
+        <input matInput [(ngModel)]="data.nombreAplicacion">
+    </mat-form-field>
+    <p>Usuario Aplicacion</p>
+    <mat-form-field>
+        <mat-label></mat-label>
+        <input matInput [(ngModel)]="data.usuarioAplicacion">
+    </mat-form-field>
+    <p>Clave Aplicacion</p>
+    <mat-form-field>
+        <mat-label></mat-label>
+        <input matInput [(ngModel)]="data.claveAplicacion">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button cdkFocusInitia [mat-dialog-close]="data">Guardar</button>
+</div>

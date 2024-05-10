@@ -31,7 +31,7 @@ export class ButtonProviderComponent {
     try {
       const result = await this.authService.signInWithGoogleProvider();
       if (result.user) {
-        const snackBarRef = this.openSnackBar("Registro exitoso 💫");
+        const snackBarRef = this.openSnackBar("Inicio Sesion Exitoso 💫");
         snackBarRef.afterDismissed().subscribe(() => {
           this.router.navigateByUrl('/home');
         });
